@@ -8,9 +8,9 @@
 ### 爬取流程
 1.解析登陆二维码图片的真实地址 得到例如(https://channels.weixin.qq.com/mobile/confirm_login.html?token=AQAAAOagpYoBwf-LMqwVlg)
 
-2. 通过F12,发现二维码真实地址的token参数是由 (https://channels.weixin.qq.com/cgi-bin/mmfinderassistant-bin/auth/auth_login_code?token=AQAAAO9KG4I-fsgWayCg7) 接口返回
+2. 通过F12,发现二维码真实地址的token参数是由 (https://channels.weixin.qq.com/cgi-bin/mmfinderassistant-bin/auth/auth_login_code7) 接口返回
 
 3. 如何判断此二维码是否扫描状态,接口: https://channels.weixin.qq.com/cgi-bin/mmfinderassistant-bin/auth/auth_login_status?token=AQAAAP0W70L5h5ZcdGGnqw&timestamp=1684481485761&_log_finder_uin=&_log_finder_id=&scene=7&reqScene=7
 
 4. 如何获取扫码用户的视频: https://channels.weixin.qq.com/cgi-bin/mmfinderassistant-bin/post/post_list (必须携带)Cookie，Cookie信息需要在
-auth_login_code接口的响应头中获取
+auth_login_status接口的响应头中获取，这个接口需要定时调用，只有在有人扫描了这个二维码,并且确认登陆的情况下，response header 中才有cookie
